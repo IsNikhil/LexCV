@@ -5,7 +5,7 @@ export const sampleResumeData: ResumeData = {
     name: "Nikhil Shah",
     email: "nikhilrksha@gmail.com",
     phone: "",
-    location: "Hammond, LA",
+    location: "United states",
     linkedin: "linkedin.com/in/nikhilsha",
     github: "github.com/IsNikhil",
     website: "nikhilshah.com.np",
