@@ -39,7 +39,7 @@ export default function Header({ onDownload, isDownloading, isDark, onToggleDark
         <button
           onClick={onDownload}
           disabled={isDownloading}
-          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white text-sm font-medium px-3 sm:px-4 py-2 rounded-lg transition-colors"
         >
           {isDownloading ? (
             <>
@@ -47,14 +47,14 @@ export default function Header({ onDownload, isDownloading, isDark, onToggleDark
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              Generating...
+              <span className="hidden sm:inline">Generating...</span>
             </>
           ) : (
             <>
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-              Download PDF
+              <span className="hidden sm:inline">Download PDF</span>
             </>
           )}
         </button>
