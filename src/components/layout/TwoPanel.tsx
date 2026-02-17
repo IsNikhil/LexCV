@@ -21,7 +21,7 @@ export default function TwoPanel({ left, right }: TwoPanelProps) {
             </a>
           </span>
           <a
-            href="https://github.com/IsNikhil/LexCV"
+            href="https://github.com/IsNikhil/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
