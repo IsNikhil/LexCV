@@ -2,7 +2,7 @@ import { ResumeData } from "@/app/types/resume";
 
 export const sampleResumeData: ResumeData = {
   personalInfo: {
-    name: "Nikhil Kumar Shah",
+    name: "Nikhil Shah",
     email: "nikhilrksha@gmail.com",
     phone: "",
     location: "Hammond, LA",
