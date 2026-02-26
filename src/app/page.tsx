@@ -6,10 +6,12 @@ import TwoPanel from "@/components/layout/TwoPanel";
 import EditorPanel from "@/components/editor/EditorPanel";
 import PreviewPanel from "@/components/preview/PreviewPanel";
 import { useResumeState } from "@/app/hooks/useResumeState";
+import { useProjectManager, SavedProject } from "@/app/hooks/useProjectManager";
 import { downloadResumeAsPdf } from "@/app/lib/downloadPdf";
 
 export default function Home() {
-  const { resume, updater } = useResumeState();
+  const { resume, updater, setResumeFull } = useResumeState();
+  const { projects, activeProject, setActiveProjectId, saveProject, deleteProject } = useProjectManager();
   const [isDownloading, setIsDownloading] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
@@ -33,6 +35,15 @@ export default function Home() {
     }
   };
 
+  const handleSave = (name: string) => {
+    saveProject(name, resume);
+  };
+
+  const handleLoadProject = (project: SavedProject) => {
+    setResumeFull(project.data);
+    setActiveProjectId(project.id);
+  };
+
   return (
     <>
       <Header
@@ -40,6 +51,11 @@ export default function Home() {
         isDownloading={isDownloading}
         isDark={isDark}
         onToggleDark={() => setIsDark((v) => !v)}
+        projects={projects}
+        activeProjectName={activeProject?.name ?? null}
+        onSave={handleSave}
+        onLoadProject={handleLoadProject}
+        onDeleteProject={deleteProject}
       />
       <TwoPanel
         left={<EditorPanel data={resume} updater={updater} />}

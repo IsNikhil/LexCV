@@ -7,6 +7,7 @@ import ExperienceSection from "./ExperienceSection";
 import EducationSection from "./EducationSection";
 import SkillsSection from "./SkillsSection";
 import ProjectSection from "./ProjectSection";
+import CustomSectionsEditor from "./CustomSectionsEditor";
 import { useResumeState } from "@/app/hooks/useResumeState";
 
 interface Props {
@@ -50,6 +51,14 @@ export default function EditorPanel({ data, updater }: Props) {
         onAddItem={updater.addSkillItem}
         onRemoveItem={updater.removeSkillItem}
         onRemoveCategory={updater.removeSkillCategory}
+      />
+      <CustomSectionsEditor
+        items={data.customSections ?? []}
+        sectionOrder={data.sectionOrder ?? []}
+        onAdd={updater.addCustomSection}
+        onUpdate={updater.updateCustomSection}
+        onRemove={updater.removeCustomSection}
+        onMove={updater.moveSection}
       />
     </div>
   );

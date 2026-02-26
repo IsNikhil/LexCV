@@ -10,7 +10,7 @@ export default function ResumeProjects({ projects }: Props) {
 
   return (
     <div className="mb-4">
-      <h2 className="text-xs font-bold text-gray-900 uppercase tracking-widest border-b border-gray-800 pb-0.5 mb-2">
+      <h2 className="text-xs font-bold text-gray-900 uppercase tracking-widest border-b border-gray-800 pb-1 mb-2">
         Projects
       </h2>
       {projects.map((proj) => (

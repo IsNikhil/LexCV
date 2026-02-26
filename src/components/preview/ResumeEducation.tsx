@@ -10,7 +10,7 @@ export default function ResumeEducation({ education }: Props) {
 
   return (
     <div className="mb-4">
-      <h2 className="text-xs font-bold text-gray-900 uppercase tracking-widest border-b border-gray-800 pb-0.5 mb-2">
+      <h2 className="text-xs font-bold text-gray-900 uppercase tracking-widest border-b border-gray-800 pb-1 mb-2">
         Education
       </h2>
       {education.map((edu) => (
@@ -18,7 +18,7 @@ export default function ResumeEducation({ education }: Props) {
           <div className="flex justify-between items-baseline">
             <span className="text-xs font-bold text-gray-900">{edu.institution}</span>
             <span className="text-xs text-gray-500 flex-shrink-0 ml-2">
-              {[edu.startDate, edu.endDate].filter(Boolean).join(" – ")}
+              {[edu.startDate, edu.endDate].filter(Boolean).join(" - ")}
             </span>
           </div>
           <div className="flex justify-between items-baseline">

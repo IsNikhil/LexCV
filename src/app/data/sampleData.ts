@@ -1,4 +1,4 @@
-import { ResumeData } from "@/app/types/resume";
+import { ResumeData, DEFAULT_SECTION_ORDER } from "@/app/types/resume";
 
 export const sampleResumeData: ResumeData = {
   personalInfo: {
@@ -55,10 +55,12 @@ export const sampleResumeData: ResumeData = {
     { id: "sk-2", category: "Frameworks", items: ["React", "Node.js", "ASP.NET Core"] },
     { id: "sk-3", category: "Tools", items: ["Git", "GitHub", "Linux", "VS Code", "Arduino"] },
   ],
+  customSections: [],
+  sectionOrder: [...DEFAULT_SECTION_ORDER],
   projects: [
     {
       id: "proj-0",
-      name: "LexCV — Resume Builder",
+      name: "LexCV - Resume Builder",
       technologies: "Next.js, TypeScript, Tailwind CSS, html2canvas, jsPDF",
       bullets: [
         "Built a full-stack resume builder with a live two-panel editor and A4 preview that updates in real time as users type.",
@@ -85,7 +87,7 @@ export const sampleResumeData: ResumeData = {
     },
     {
       id: "proj-3",
-      name: "Game Projects — Tic-Tac-Toe & Drive-It",
+      name: "Game Projects - Tic-Tac-Toe & Drive-It",
       technologies: "Java, JavaScript, HTML5 Canvas",
       bullets: [
         "Built interactive games using OOP, structured logic, and state management across desktop and browser.",

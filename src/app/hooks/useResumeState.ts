@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { ResumeData, PersonalInfo, Experience, Education, SkillCategory, Project } from "@/app/types/resume";
+import { ResumeData, PersonalInfo, Experience, Education, SkillCategory, Project, CustomSection, DEFAULT_SECTION_ORDER } from "@/app/types/resume";
 import { sampleResumeData } from "@/app/data/sampleData";
 import { v4 as uuidv4 } from "uuid";
 
@@ -101,6 +101,43 @@ export function useResumeState() {
     setResume((prev) => ({ ...prev, projects: prev.projects.filter((p) => p.id !== id) }));
   }, []);
 
+  const addCustomSection = useCallback(() => {
+    const blank: CustomSection = { id: uuidv4(), title: "", content: "" };
+    setResume((prev) => ({
+      ...prev,
+      customSections: [...(prev.customSections ?? []), blank],
+      sectionOrder: [...(prev.sectionOrder ?? DEFAULT_SECTION_ORDER), blank.id],
+    }));
+  }, []);
+
+  const updateCustomSection = useCallback((id: string, field: keyof Omit<CustomSection, "id">, value: string) => {
+    setResume((prev) => ({ ...prev, customSections: (prev.customSections ?? []).map((s) => s.id === id ? { ...s, [field]: value } : s) }));
+  }, []);
+
+  const removeCustomSection = useCallback((id: string) => {
+    setResume((prev) => ({
+      ...prev,
+      customSections: (prev.customSections ?? []).filter((s) => s.id !== id),
+      sectionOrder: (prev.sectionOrder ?? DEFAULT_SECTION_ORDER).filter((k) => k !== id),
+    }));
+  }, []);
+
+  const moveSection = useCallback((id: string, dir: "up" | "down") => {
+    setResume((prev) => {
+      const order = [...(prev.sectionOrder ?? DEFAULT_SECTION_ORDER)];
+      const idx = order.indexOf(id);
+      if (idx === -1) return prev;
+      const swapIdx = dir === "up" ? idx - 1 : idx + 1;
+      if (swapIdx < 0 || swapIdx >= order.length) return prev;
+      [order[idx], order[swapIdx]] = [order[swapIdx], order[idx]];
+      return { ...prev, sectionOrder: order };
+    });
+  }, []);
+
+  const setResumeFull = useCallback((data: ResumeData) => {
+    setResume(data);
+  }, []);
+
   return {
     resume,
     updater: {
@@ -109,6 +146,8 @@ export function useResumeState() {
       addEducation, updateEducation, removeEducation,
       addSkillCategory, updateSkillCategory, addSkillItem, removeSkillItem, removeSkillCategory,
       addProject, updateProject, updateProjectBullet, addProjectBullet, removeProjectBullet, removeProject,
+      addCustomSection, updateCustomSection, removeCustomSection, moveSection,
     },
+    setResumeFull,
   };
 }

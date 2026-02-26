@@ -10,7 +10,7 @@ export default function ResumeExperience({ experience }: Props) {
 
   return (
     <div className="mb-4">
-      <h2 className="text-xs font-bold text-gray-900 uppercase tracking-widest border-b border-gray-800 pb-0.5 mb-2">
+      <h2 className="text-xs font-bold text-gray-900 uppercase tracking-widest border-b border-gray-800 pb-1 mb-2">
         Experience
       </h2>
       {experience.map((exp) => (
@@ -18,7 +18,7 @@ export default function ResumeExperience({ experience }: Props) {
           <div className="flex justify-between items-baseline">
             <span className="text-xs font-bold text-gray-900">{exp.title}</span>
             <span className="text-xs text-gray-500 flex-shrink-0 ml-2">
-              {[exp.startDate, exp.endDate].filter(Boolean).join(" – ")}
+              {[exp.startDate, exp.endDate].filter(Boolean).join(" - ")}
             </span>
           </div>
           <div className="flex justify-between items-baseline">

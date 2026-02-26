@@ -42,6 +42,15 @@ export interface Project {
   bullets: string[];
 }
 
+export interface CustomSection {
+  id: string;
+  title: string;
+  content: string;
+}
+
+export const BUILT_IN_SECTIONS = ["summary", "experience", "education", "projects", "skills"] as const;
+export const DEFAULT_SECTION_ORDER = [...BUILT_IN_SECTIONS];
+
 export interface ResumeData {
   personalInfo: PersonalInfo;
   summary: string;
@@ -49,4 +58,6 @@ export interface ResumeData {
   education: Education[];
   skills: SkillCategory[];
   projects: Project[];
+  customSections: CustomSection[];
+  sectionOrder: string[];
 }
